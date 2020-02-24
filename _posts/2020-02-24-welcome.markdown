@@ -10,14 +10,14 @@ feature_image: "https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg
 
 Welcome to my tech blog about artificial intelligence.
 
-My name is Timo, and I'm doing my masters degree at ZHAW. I'm studying full time at the institute of embedded systems, mainly focusing on FPGA stuff for the pratical side and algorithmics for the theoretical side. Me personally, I really love god, technology, mountains and dessert. Meaning I love spending time outside, trying out new technologies all nights, thinking about life or host a dessert-party :)
+My name is Timo, and I'm doing my masters degree at ZHAW. I'm studying full time at the institute of embedded systems, mainly focusing on FPGA stuff for the practical side and algorithmics for the theoretical side. Me personally, I really love god, technology, mountains and dessert. Meaning I love spending time outside, trying out new technologies all nights, thinking about life or host a dessert-party :)
 
-Here at ZHAW I'm also taking a seminar about artifical intelligence, where we talk about scientfic reading, writing and reviewing. I took this seminar, because artificial intelligence was a bit on the sideline for me lately, and this seemd like the perfect opportunity to refresh my mind and think about new projects again.
+Here at ZHAW I'm also taking a seminar about artificial intelligence, where we talk about scientific reading, writing and reviewing. I took this seminar, because artificial intelligence was a bit on the sideline for me lately, and this seemd like the perfect opportunity to refresh my mind and think about new projects again.
 
-In the coming weeks I'll be blogging about one particular application of artifical intelligence: The problem of *cover song identification*... Stay tuned!
+In the coming weeks I'll be blogging about one particular application of artificial intelligence: The problem of **cover song identification**... Stay tuned!
 
 My learning goals for this seminar are:
-* Gain knowledge in the field of Music Information Retrieval using artifical intelligence.
+* Gain knowledge in the field of Music Information Retrieval using artificial intelligence.
 * Learn how to critically analyze papers
 * Discuss best practices when creating own papers
 
