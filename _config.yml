@@ -43,7 +43,7 @@ collections:
     output: true
     feature_text: |
       Welcome to the blog
-    feature_image: "https://picsum.photos/2560/600?image=866"
+    feature_image: "assets/title.jpg"
 
 # Exclude from processing.
 # The following items will not be processed, by default.
