@@ -1,0 +1,81 @@
+---
+layout: post
+title:  "Review"
+date:   2020-06-03-12 20:45:37 +0100
+categories: review cover-song-identification
+comments: true
+feature_image: "/aiblog-timo/assets/review.jpg"
+---
+
+In my previous blog posts, I talked about the content and the general writing style of the paper [Temporal Pyramid Pooling Convolutional Neural Network for Cover Song Identification](https://www.ijcai.org/Proceedings/2019/0673.pdf). You, the readers of my blog, responded with some interesting comments:
+
+Sebastian Häni wrote:
+> (...) to my understanding SPPs are cramping up the computational cost to train a network significantly. I'm guessing song files are usually small and today everybody has a supercomputer in their pocket, thus it should probably be easily handled. (...) 
+
+The following picture from the paper shows how the temporal pyramid pooling layer is embedded into the entire setup:
+
+![](/aiblog-timo/assets/layers.png)
+
+> Overview of retrieval process. Conv: Convolutional layer, Pool: Max pooling layer, TPP: Temporal Pyramid Pooling layer and FC: Fully-connected layer. The numbers in the block show the size and number of channels of convolutional layers, and input and output dimension of fully-connected layers. Output dimension of FC1 is 4611 because a dataset with 4611 songs is used for training.
+
+I imagine that running the trained network on a song would not require much more computing power, than running it on a network without a TPP layer. I think the TPP layer itself is comparable to a standard max-pooling layer regarding complexity and cost. Also, the training effort of the network depicted above should be comparable to the effort required to train the same network without the TPP layer. There's nothing to train in the TPP layer. However, if you have a TPP layer and therefore support for variable-length input sequences, you probably want to train the network to be independent of the input length. In order to achieve that, the authors of the paper devised a multi-length training-scheme which increased the training size by a factor of three. So yes, in a way you're correct, TPP cramps up the computational cost to train a network.
+
+r_chavarriaga wrote:
+> (...) I would be curious to know more about the data preparation and the validation process to get a better assessment of the strength of the paper conclusions. Another interesting analysis may be the trade-off between the model complexity and the performance improvements obtained with respect to previous approaches.
+
+Before the data is fed into the network, a constant-Q transformation (CQT) is applied to the songs in order to transform them into the logarithmic frequency domain. After that, the CQT-transformed sequence is fed into the first convolutional layer of the network, where the filters are applied to 2 second long, 3 octave wide patches of the song. Compared to other solutions where often some kind of key-invariant transform is applied before feeding the data into the network, this approach inputs the complete information into the network. The authors decided to leave the learning of the key-invariance to the network.
+To train and compare their network to other solutions, the authors generated some fixed-size input sequences: They randomly cropped three subsequences with the length of 100s, 150s and 200s out of each song in their database. Then they trained different networks on three different datasets. For the medium-sized youtube dataset (50 compositions, each with seven different recordings) they obtained the following results: Training the full network (as depicted above) with the input sequences of length 100s, 150s and 200s resulted in a mean average precision of 0.859. Training the network with only one input size resulted in a MAP of 0.812. They also benchmarked the performance of the network without the TPP layer, by directly connecting the last convolutional layer to the fully connected layer and obtained a MAP of 0.777. This shows that the introduction of the TPP layer improved the MAP by around 8%. Of course, the authors also compared their result to other work from literature. Their solution has a MAP that is 12-20% higher than the best existing solution, depending on the dataset. Their solution is also a tiny bit faster in song querying than previous solutions. In my opinion, the authors really did a thorough validation of their work. Apart from the results mentioned here, they also measured the robustness against musical variations and conducted an error analysis. What they did not provide is an analysis of the model complexity and a benchmark of the time required to train the network compared to other solutions.
+
+
+## Review
+
+In the following section, I want to review the paper and talk about its impact from my point of view. I'm going to use the IJCAI review criteria as a template for my review.
+
+#### Relevance: 5/10 
+
+The paper is a conference paper for the Twenty-Eighth International Joint Conference on Artificial Intelligence (IJCAI-19). The main contribution of the paper is, in my opinion, the application of pyramid pooling to cover song identification. Spatial pyramid pooling existed as a concept in the domain of image processing. Spatial pyramid pooling has been transferred into various other domains as well. With that, TPP for cover song identification is not really an interesting addition for a researcher that is interested in artificial intelligence in general. It's rather "just another application of pyramid pooling (in a different field)". However, for an audience coming from the music information retrieval background, this would be a 10/10 relevant paper.
+
+#### Significance: 10/10
+
+The application of pyramid pooling for cover song identification really solves an important problem: How to train a network with variable-length input songs? Previous solutions had only a suboptimal answer to that question. The work at hand significantly improved the MAP compared to previous solutions and is likely going to have a lasting impact on the field.
+
+#### Originality: 9/10:
+
+As mentioned above, pyramid pooling has been around and known for quite some time. But applying PP for CSI is a quite clever and also novel solution. 
+
+#### Technical Quality: 9/10 
+
+The paper is really well structured and has a good level of detail. The authors include a lot of benchmarks, and they presented them clearly and concisely. I also liked that the authors provided the source code of their work on GitHub. As I mentioned in a previous blog post, the introduction of the topic could be improved. 
+
+### Clarity and quality of writing: 10/10
+
+The language is appropriate and the text is easy to read.
+
+
+#### Scholarship, i.e. scientific context: 6/10
+
+Previous work is discussed briefly. What is missing is a clear explanation of why previous solutions fail and where exactly they need to be improved. The comparison of the final results to the previous solutions is well presented and provides enough details.
+
+#### Overall Score: 6/10
+
+This is an excellent paper. If it were submitted for the Mirex conference, I would give it an overall score of 8/10. Apart from the shortcomings in the introduction and analysis of previous work, it provides a great contribution to the community.
+
+
+### Confidence of my own assessment: 6/10
+
+My knowledge in the field of artificial intelligence and music information retrieval is still pretty limited. During the study of this paper, I managed to read up on the most important topics and therefore I can assess the value of this work.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
