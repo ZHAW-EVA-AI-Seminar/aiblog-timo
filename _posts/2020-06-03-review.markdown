@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Review"
-date:   2020-06-03-12 20:45:37 +0100
+date:   2020-06-03 20:45:37 +0100
 categories: review cover-song-identification
 comments: true
 feature_image: "/aiblog-timo/assets/review.jpg"
